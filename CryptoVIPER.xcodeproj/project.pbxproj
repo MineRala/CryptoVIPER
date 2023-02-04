@@ -10,20 +10,27 @@
 		E828F314298EAF990063EC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F313298EAF990063EC58 /* AppDelegate.swift */; };
 		E828F316298EAF990063EC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F315298EAF990063EC58 /* SceneDelegate.swift */; };
 		E828F318298EAF990063EC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F317298EAF990063EC58 /* ViewController.swift */; };
-		E828F31B298EAF990063EC58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E828F319298EAF990063EC58 /* Main.storyboard */; };
 		E828F31D298EAF9A0063EC58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E828F31C298EAF9A0063EC58 /* Assets.xcassets */; };
 		E828F320298EAF9A0063EC58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E828F31E298EAF9A0063EC58 /* LaunchScreen.storyboard */; };
+		E828F32A298EB1E00063EC58 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F329298EB1E00063EC58 /* HomeView.swift */; };
+		E828F32C298EB1F00063EC58 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F32B298EB1F00063EC58 /* HomeInteractor.swift */; };
+		E828F32E298EB2050063EC58 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F32D298EB2050063EC58 /* HomePresenter.swift */; };
+		E828F330298EB2150063EC58 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F32F298EB2150063EC58 /* HomeEntity.swift */; };
+		E828F332298EB2210063EC58 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F331298EB2210063EC58 /* HomeRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E828F310298EAF990063EC58 /* CryptoVIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoVIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E828F313298EAF990063EC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E828F315298EAF990063EC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E828F317298EAF990063EC58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E828F31A298EAF990063EC58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E828F31C298EAF9A0063EC58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E828F31F298EAF9A0063EC58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E828F321298EAF9A0063EC58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E828F329298EB1E00063EC58 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E828F32B298EB1F00063EC58 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		E828F32D298EB2050063EC58 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		E828F32F298EB2150063EC58 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
+		E828F331298EB2210063EC58 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +63,42 @@
 		E828F312298EAF990063EC58 /* CryptoVIPER */ = {
 			isa = PBXGroup;
 			children = (
-				E828F313298EAF990063EC58 /* AppDelegate.swift */,
-				E828F315298EAF990063EC58 /* SceneDelegate.swift */,
-				E828F317298EAF990063EC58 /* ViewController.swift */,
-				E828F319298EAF990063EC58 /* Main.storyboard */,
-				E828F31C298EAF9A0063EC58 /* Assets.xcassets */,
-				E828F31E298EAF9A0063EC58 /* LaunchScreen.storyboard */,
-				E828F321298EAF9A0063EC58 /* Info.plist */,
+				E828F333298EB2A30063EC58 /* Base */,
+				E828F327298EB1BA0063EC58 /* Module */,
 			);
 			path = CryptoVIPER;
+			sourceTree = "<group>";
+		};
+		E828F327298EB1BA0063EC58 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				E828F328298EB1CF0063EC58 /* Home */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		E828F328298EB1CF0063EC58 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E828F329298EB1E00063EC58 /* HomeView.swift */,
+				E828F32B298EB1F00063EC58 /* HomeInteractor.swift */,
+				E828F32D298EB2050063EC58 /* HomePresenter.swift */,
+				E828F32F298EB2150063EC58 /* HomeEntity.swift */,
+				E828F331298EB2210063EC58 /* HomeRouter.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E828F333298EB2A30063EC58 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E828F313298EAF990063EC58 /* AppDelegate.swift */,
+				E828F315298EAF990063EC58 /* SceneDelegate.swift */,
+				E828F31E298EAF9A0063EC58 /* LaunchScreen.storyboard */,
+				E828F31C298EAF9A0063EC58 /* Assets.xcassets */,
+				E828F321298EAF9A0063EC58 /* Info.plist */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +161,6 @@
 			files = (
 				E828F320298EAF9A0063EC58 /* LaunchScreen.storyboard in Resources */,
 				E828F31D298EAF9A0063EC58 /* Assets.xcassets in Resources */,
-				E828F31B298EAF990063EC58 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E828F318298EAF990063EC58 /* ViewController.swift in Sources */,
+				E828F32A298EB1E00063EC58 /* HomeView.swift in Sources */,
+				E828F330298EB2150063EC58 /* HomeEntity.swift in Sources */,
 				E828F314298EAF990063EC58 /* AppDelegate.swift in Sources */,
+				E828F32E298EB2050063EC58 /* HomePresenter.swift in Sources */,
+				E828F332298EB2210063EC58 /* HomeRouter.swift in Sources */,
+				E828F32C298EB1F00063EC58 /* HomeInteractor.swift in Sources */,
 				E828F316298EAF990063EC58 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +184,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E828F319298EAF990063EC58 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E828F31A298EAF990063EC58 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E828F31E298EAF9A0063EC58 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,12 +318,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 29JK24NZ4B;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CryptoVIPER/Info.plist;
+				INFOPLIST_FILE = CryptoVIPER/Base/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +330,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mine.CryptoVIPER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +348,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 29JK24NZ4B;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CryptoVIPER/Info.plist;
+				INFOPLIST_FILE = CryptoVIPER/Base/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +360,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mine.CryptoVIPER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
