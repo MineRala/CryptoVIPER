@@ -18,9 +18,7 @@ protocol AnyView {
     func update(with error: String)
 }
 
-class CryptoViewController: UIViewController, AnyView {
-    var presenter: AnyPresenter?
-        
+final class CryptoViewController: UIViewController, AnyView {
     private lazy var tableView: UITableView = {
        let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -39,11 +37,12 @@ class CryptoViewController: UIViewController, AnyView {
         return label
     }()
     
+    var presenter: AnyPresenter?
     var cryptos: [Crypto] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         view.addSubview(tableView)
         view.addSubview(messageLabel)
         
@@ -88,8 +87,6 @@ extension CryptoViewController: UITableViewDataSource {
         content.text = cryptos[indexPath.row].currency
         content.secondaryText = cryptos[indexPath.row].price
         cell.contentConfiguration = content
-        cell.backgroundColor = .red
         return cell
     }
 }
-

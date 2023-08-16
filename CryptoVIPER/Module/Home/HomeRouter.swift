@@ -22,7 +22,7 @@ protocol AnyRouter {
     static func startExecution() -> AnyRouter
 }
 
-class CryptoRouter: AnyRouter {
+final class CryptoRouter: AnyRouter {
     var entry: EntryPoint?
     
     static func startExecution() -> AnyRouter {

@@ -13,6 +13,7 @@ import Foundation
 enum NetworkError: Error {
     case networkFailed
     case parsingFailed
+    case invalidServerResponse
 }
   
 protocol AnyPresenter {
@@ -23,14 +24,23 @@ protocol AnyPresenter {
     func interactorDidDownloadCrypto(result: Result<[Crypto], Error>)
 }
 
-class CryptoPresenter: AnyPresenter {
+final class CryptoPresenter: AnyPresenter {
     var router: AnyRouter?
+    var view: AnyView?
     var interactor: AnyInteractor? {
         didSet {
-            interactor?.downloadCryptos()
+            // Completion için kullanılıyor.
+           // interactor?.downloadCryptos()
+            Task {
+                do {
+                    guard let cryptos: [Crypto] = try await interactor?.downloadCryptos() else { return }
+                    view?.update(with: cryptos)
+                } catch {
+                    view?.update(with: "Try again later")
+                }
+            }
         }
     }
-    var view: AnyView?
     
     func interactorDidDownloadCrypto(result: Result<[Crypto], Error>) {
         switch result {
