@@ -11,15 +11,15 @@ import Foundation
 // Class, protocol
 // logic
 
-protocol AnyInteractor {
-    var presenter: AnyPresenter? { get set }
+protocol HomeInteractorInterface: AnyObject {
+    var presenter: HomePresenterInput? { get set }
     
     func downloadCryptos<T: Decodable>() async throws -> T
     func downloadCryptos()
 }
 
-final class CryptoInteractor: AnyInteractor {
-    var presenter: AnyPresenter?
+final class CryptoInteractor: HomeInteractorInterface {
+    var presenter: HomePresenterInput?
     
     func downloadCryptos() {
         guard let url = URL(string: "https://raw.githubusercontent.com/atilsamancioglu/IA32-CryptoComposeData/main/cryptolist.json") else { return }

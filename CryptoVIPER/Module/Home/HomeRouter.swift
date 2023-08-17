@@ -14,24 +14,24 @@ import UIKit
 // Uygulama ilk açıldığında nereye gidecek, hangi sayfalara gidilecek
 // Uygulamayı organize eden class
 
-typealias EntryPoint = AnyView & UIViewController
+typealias EntryPoint = HomeViewInterface & UIViewController
 
-protocol AnyRouter {
-    // Any kullanmamızın sebebi syntax.
+protocol HomeRouterInterface: AnyObject {
     var entry: EntryPoint? { get }
-    static func startExecution() -> AnyRouter
+    static func startExecution() -> HomeRouterInterface
+    func goToDetail(model: Crypto, viewController: UIViewController)
 }
 
-final class CryptoRouter: AnyRouter {
-    var entry: EntryPoint?
+final class CryptoRouter: HomeRouterInterface {
+    weak var entry: EntryPoint?
     
-    static func startExecution() -> AnyRouter {
+    static func startExecution() -> HomeRouterInterface {
         let router = CryptoRouter()
         
         // Assign VIP
-        var view: AnyView = CryptoViewController()
-        var presenter: AnyPresenter = CryptoPresenter()
-        var interactor: AnyInteractor = CryptoInteractor()
+        let view: HomeViewInterface = CryptoViewController()
+        let presenter: HomePresenterInput = CryptoPresenter()
+        let interactor: HomeInteractorInterface = CryptoInteractor()
         
         view.presenter = presenter
         presenter.view = view
@@ -42,5 +42,10 @@ final class CryptoRouter: AnyRouter {
         router.entry = view as? EntryPoint
         
         return router
+    }
+    
+    func goToDetail(model: Crypto, viewController: UIViewController) {
+        let repoDetailVC = DetailRouter.createModule(model)
+        viewController.present(repoDetailVC, animated: true, completion: nil)
     }
 }

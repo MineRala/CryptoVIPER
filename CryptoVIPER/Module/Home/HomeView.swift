@@ -11,19 +11,20 @@ import UIKit
 // Talks to -> presenter
 // Class, protocol
 
-protocol AnyView {
-    var presenter: AnyPresenter? { get set }
+protocol HomeViewInterface: AnyObject {
+    var presenter: HomePresenterInput? { get set }
     
     func update(with cryptos: [Crypto])
     func update(with error: String)
 }
 
-final class CryptoViewController: UIViewController, AnyView {
+final class CryptoViewController: UIViewController, HomeViewInterface {
     private lazy var tableView: UITableView = {
        let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.isHidden = true
         table.dataSource = self
+        table.delegate = self
         return table
     }()
     
@@ -37,7 +38,7 @@ final class CryptoViewController: UIViewController, AnyView {
         return label
     }()
     
-    var presenter: AnyPresenter?
+    weak var presenter: HomePresenterInput?
     var cryptos: [Crypto] = []
     
     override func viewDidLoad() {
@@ -45,6 +46,7 @@ final class CryptoViewController: UIViewController, AnyView {
         view.backgroundColor = .white
         view.addSubview(tableView)
         view.addSubview(messageLabel)
+        presenter?.viewDidLoad()
         
     }
     
@@ -88,5 +90,12 @@ extension CryptoViewController: UITableViewDataSource {
         content.secondaryText = cryptos[indexPath.row].price
         cell.contentConfiguration = content
         return cell
+    }
+}
+
+extension CryptoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        presenter?.onTapCell(model: cryptos[indexPath.row], viewController: self)
     }
 }

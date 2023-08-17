@@ -5,7 +5,7 @@
 //  Created by Mine Rala on 4.02.2023.
 //
 
-import Foundation
+import UIKit
 
 // talks to -> interactor, router, view
 // Class, protocol
@@ -16,29 +16,24 @@ enum NetworkError: Error {
     case invalidServerResponse
 }
   
-protocol AnyPresenter {
-    var router: AnyRouter? { get set }
-    var interactor: AnyInteractor? { get set }
-    var view: AnyView? { get set }
+protocol HomePresenterInput: AnyObject {
+    var router: HomeRouterInterface? { get set }
+    var interactor: HomeInteractorInterface? { get set }
+    var view: HomeViewInterface? { get set }
     
     func interactorDidDownloadCrypto(result: Result<[Crypto], Error>)
+    func viewDidLoad()
+    func onTapCell(model: Crypto, viewController: UIViewController)
 }
 
-final class CryptoPresenter: AnyPresenter {
-    var router: AnyRouter?
-    var view: AnyView?
-    var interactor: AnyInteractor? {
+final class CryptoPresenter: HomePresenterInput {
+    var router: HomeRouterInterface?
+    var view: HomeViewInterface?
+    var interactor: HomeInteractorInterface? {
         didSet {
             // Completion için kullanılıyor.
            // interactor?.downloadCryptos()
-            Task {
-                do {
-                    guard let cryptos: [Crypto] = try await interactor?.downloadCryptos() else { return }
-                    view?.update(with: cryptos)
-                } catch {
-                    view?.update(with: "Try again later")
-                }
-            }
+           
         }
     }
     
@@ -51,4 +46,18 @@ final class CryptoPresenter: AnyPresenter {
         }
     }
     
+    func viewDidLoad() {
+        Task {
+            do {
+                guard let cryptos: [Crypto] = try await interactor?.downloadCryptos() else { return }
+                view?.update(with: cryptos)
+            } catch {
+                view?.update(with: "Try again later")
+            }
+        }
+    }
+    
+    func onTapCell(model: Crypto, viewController: UIViewController) {
+        router?.goToDetail(model: model, viewController: viewController)
+    }
 }

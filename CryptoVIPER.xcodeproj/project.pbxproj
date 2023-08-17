@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E81DD9582A8CFB26003C768B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81DD9572A8CFB26003C768B /* DetailView.swift */; };
+		E81DD95A2A8CFB33003C768B /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81DD9592A8CFB33003C768B /* DetailInteractor.swift */; };
+		E81DD95C2A8CFB3B003C768B /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81DD95B2A8CFB3B003C768B /* DetailPresenter.swift */; };
+		E81DD95E2A8CFB48003C768B /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81DD95D2A8CFB48003C768B /* DetailRouter.swift */; };
 		E828F314298EAF990063EC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F313298EAF990063EC58 /* AppDelegate.swift */; };
 		E828F316298EAF990063EC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F315298EAF990063EC58 /* SceneDelegate.swift */; };
 		E828F31D298EAF9A0063EC58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E828F31C298EAF9A0063EC58 /* Assets.xcassets */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E81DD9572A8CFB26003C768B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		E81DD9592A8CFB33003C768B /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		E81DD95B2A8CFB3B003C768B /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		E81DD95D2A8CFB48003C768B /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
 		E828F310298EAF990063EC58 /* CryptoVIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoVIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E828F313298EAF990063EC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E828F315298EAF990063EC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +51,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E81DD9562A8CFB1E003C768B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				E81DD9572A8CFB26003C768B /* DetailView.swift */,
+				E81DD9592A8CFB33003C768B /* DetailInteractor.swift */,
+				E81DD95B2A8CFB3B003C768B /* DetailPresenter.swift */,
+				E81DD95D2A8CFB48003C768B /* DetailRouter.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		E828F307298EAF990063EC58 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +90,7 @@
 		E828F327298EB1BA0063EC58 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				E81DD9562A8CFB1E003C768B /* Detail */,
 				E828F328298EB1CF0063EC58 /* Home */,
 			);
 			path = Module;
@@ -171,7 +191,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E828F32A298EB1E00063EC58 /* HomeView.swift in Sources */,
+				E81DD95E2A8CFB48003C768B /* DetailRouter.swift in Sources */,
+				E81DD9582A8CFB26003C768B /* DetailView.swift in Sources */,
 				E828F330298EB2150063EC58 /* HomeEntity.swift in Sources */,
+				E81DD95C2A8CFB3B003C768B /* DetailPresenter.swift in Sources */,
+				E81DD95A2A8CFB33003C768B /* DetailInteractor.swift in Sources */,
 				E828F314298EAF990063EC58 /* AppDelegate.swift in Sources */,
 				E828F32E298EB2050063EC58 /* HomePresenter.swift in Sources */,
 				E828F332298EB2210063EC58 /* HomeRouter.swift in Sources */,
