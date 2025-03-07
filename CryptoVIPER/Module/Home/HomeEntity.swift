@@ -7,9 +7,18 @@
 
 import Foundation
 
-// Struct
-
 struct Crypto: Decodable {
     let currency: String
     let price: String
+}
+
+// UI' a Entity gönderilmez, Presentation modeli gönderilir. Presenterda entitiyi prsentation model'e convert ediyoruz.
+struct CryptoPresentation {
+    let currency: String
+    let price: String
+
+    init(crypto: Crypto) {
+        self.currency = crypto.currency
+        self.price = crypto.price
+    }
 }

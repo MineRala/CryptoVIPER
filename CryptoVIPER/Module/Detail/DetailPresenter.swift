@@ -7,23 +7,19 @@
 
 import Foundation
 
-protocol DetailPresenterInterface: AnyObject {
-    
+final class DetailPresenter {
+    private unowned var view: DetailViewProtocol
+    private let crypto: Crypto
+
+    init(view: DetailViewProtocol, crypto: Crypto) {
+        self.view = view
+        self.crypto = crypto
+    }
 }
 
-class DetailPresenter: DetailPresenterInterface {
-    var view: DetailViewInterface?
-    private let interactor: DetailInteractorInterface
-    private let router: DetailRouterInput
-
-    
-    init(view: DetailViewInterface,
-         interactor: DetailInteractorInterface,
-         router: DetailRouterInput) {
-        self.view = view
-        self.interactor = interactor
-        self.router = router
-       
-        
+// MARK: - DetailPresenterProtocol
+extension DetailPresenter: DetailPresenterProtocol {
+    func load() {
+        view.update(crypto)
     }
 }

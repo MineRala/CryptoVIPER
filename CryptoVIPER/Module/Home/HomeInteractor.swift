@@ -7,47 +7,37 @@
 
 import Foundation
 
-// talks to -> presenter
-// Class, protocol
-// logic
+final class HomeInteractor {
+    weak var delegate: HomeInteractorDelegate?
+    private let networkManager: NetworkManagerProtocol
+    private var cryptos: [Crypto] = []
 
-protocol HomeInteractorInterface: AnyObject {
-    var presenter: HomePresenterInput? { get set }
-    
-    func downloadCryptos<T: Decodable>() async throws -> T
-    func downloadCryptos()
+    init(networkManager: NetworkManagerProtocol) {
+        self.networkManager = networkManager
+    }
 }
 
-final class CryptoInteractor: HomeInteractorInterface {
-    var presenter: HomePresenterInput?
-    
-    func downloadCryptos() {
-        guard let url = URL(string: "https://raw.githubusercontent.com/atilsamancioglu/IA32-CryptoComposeData/main/cryptolist.json") else { return }
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self else { return }
-            guard let data = data, error == nil else {
-                self.presenter?.interactorDidDownloadCrypto(result: .failure(NetworkError.networkFailed))
-                return
-            }
-            do {
-                let cryptos = try JSONDecoder().decode([Crypto].self, from: data)
-                self.presenter?.interactorDidDownloadCrypto(result: .success(cryptos))
-            } catch {
-                self.presenter?.interactorDidDownloadCrypto(result: .failure(NetworkError.parsingFailed))
-            }
+// MARK: - HomeInteractorProtocol
+extension HomeInteractor: HomeInteractorProtocol {
+    func load() async {
+        delegate?.handleOutput(.setLoading(true))
+
+        do {
+            let cryptos: [Crypto] = try await networkManager.makeRequest(endpoint: .cryptoModel, type: [Crypto].self)
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            self.cryptos = cryptos
+            delegate?.handleOutput(.setLoading(false))
+            delegate?.handleOutput(.showCryptoList(cryptos))
+        } catch let error as CRError {
+            delegate?.handleOutput(.setLoading(false))
+            delegate?.handleOutput(.showError(error.rawValue))
+        } catch {
+            delegate?.handleOutput(.setLoading(false))
+            delegate?.handleOutput(.showError("Unowned Error:: \(error.localizedDescription)"))
         }
-        task.resume()
     }
-    
-    func downloadCryptos<T: Decodable>() async throws -> T {
-        guard let url = URL(string: "https://raw.githubusercontent.com/atilsamancioglu/IA32-CryptoComposeData/main/cryptolist.json") else {
-            throw NetworkError.networkFailed
-        }
-        let (data, response) = try await URLSession.shared.data(from: url)
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw NetworkError.invalidServerResponse
-        }
-        let result = try JSONDecoder().decode(T.self, from: data)
-        return result
+
+    func selectCrypto(at index: Int) {
+        delegate?.handleOutput(.showCryptoDetail(cryptos[index]))
     }
 }

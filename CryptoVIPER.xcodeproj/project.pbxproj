@@ -3,16 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		E81DD9582A8CFB26003C768B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81DD9572A8CFB26003C768B /* DetailView.swift */; };
-		E81DD95A2A8CFB33003C768B /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81DD9592A8CFB33003C768B /* DetailInteractor.swift */; };
 		E81DD95C2A8CFB3B003C768B /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81DD95B2A8CFB3B003C768B /* DetailPresenter.swift */; };
-		E81DD95E2A8CFB48003C768B /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81DD95D2A8CFB48003C768B /* DetailRouter.swift */; };
 		E828F314298EAF990063EC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F313298EAF990063EC58 /* AppDelegate.swift */; };
-		E828F316298EAF990063EC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F315298EAF990063EC58 /* SceneDelegate.swift */; };
 		E828F31D298EAF9A0063EC58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E828F31C298EAF9A0063EC58 /* Assets.xcassets */; };
 		E828F320298EAF9A0063EC58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E828F31E298EAF9A0063EC58 /* LaunchScreen.storyboard */; };
 		E828F32A298EB1E00063EC58 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F329298EB1E00063EC58 /* HomeView.swift */; };
@@ -20,16 +17,17 @@
 		E828F32E298EB2050063EC58 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F32D298EB2050063EC58 /* HomePresenter.swift */; };
 		E828F330298EB2150063EC58 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F32F298EB2150063EC58 /* HomeEntity.swift */; };
 		E828F332298EB2210063EC58 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828F331298EB2210063EC58 /* HomeRouter.swift */; };
+		E8943AC42D7B72E7009A4AE9 /* HomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8943AC32D7B72E7009A4AE9 /* HomeContracts.swift */; };
+		E8943AC62D7B8580009A4AE9 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8943AC52D7B8580009A4AE9 /* HomeBuilder.swift */; };
+		E8943AC82D7B89B2009A4AE9 /* DetailContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8943AC72D7B89B2009A4AE9 /* DetailContracts.swift */; };
+		E8943ACA2D7B89CA009A4AE9 /* DetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8943AC92D7B89CA009A4AE9 /* DetailBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E81DD9572A8CFB26003C768B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		E81DD9592A8CFB33003C768B /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		E81DD95B2A8CFB3B003C768B /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
-		E81DD95D2A8CFB48003C768B /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
 		E828F310298EAF990063EC58 /* CryptoVIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoVIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E828F313298EAF990063EC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E828F315298EAF990063EC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E828F31C298EAF9A0063EC58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E828F31F298EAF9A0063EC58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E828F321298EAF9A0063EC58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,7 +36,27 @@
 		E828F32D298EB2050063EC58 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		E828F32F298EB2150063EC58 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
 		E828F331298EB2210063EC58 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		E8943AC32D7B72E7009A4AE9 /* HomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContracts.swift; sourceTree = "<group>"; };
+		E8943AC52D7B8580009A4AE9 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
+		E8943AC72D7B89B2009A4AE9 /* DetailContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContracts.swift; sourceTree = "<group>"; };
+		E8943AC92D7B89CA009A4AE9 /* DetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E8943AC02D7B727B009A4AE9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Endpoint.swift,
+				ErrorMessage.swift,
+			);
+			target = E828F30F298EAF990063EC58 /* CryptoVIPER */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E8943ABA2D7B71CC009A4AE9 /* Managers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Managers; sourceTree = "<group>"; };
+		E8943ABD2D7B7269009A4AE9 /* Enums */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E8943AC02D7B727B009A4AE9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Enums; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E828F30D298EAF990063EC58 /* Frameworks */ = {
@@ -55,9 +73,9 @@
 			isa = PBXGroup;
 			children = (
 				E81DD9572A8CFB26003C768B /* DetailView.swift */,
-				E81DD9592A8CFB33003C768B /* DetailInteractor.swift */,
 				E81DD95B2A8CFB3B003C768B /* DetailPresenter.swift */,
-				E81DD95D2A8CFB48003C768B /* DetailRouter.swift */,
+				E8943AC72D7B89B2009A4AE9 /* DetailContracts.swift */,
+				E8943AC92D7B89CA009A4AE9 /* DetailBuilder.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -82,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				E828F333298EB2A30063EC58 /* Base */,
+				E8943ABD2D7B7269009A4AE9 /* Enums */,
+				E8943ABA2D7B71CC009A4AE9 /* Managers */,
 				E828F327298EB1BA0063EC58 /* Module */,
 			);
 			path = CryptoVIPER;
@@ -104,6 +124,8 @@
 				E828F32D298EB2050063EC58 /* HomePresenter.swift */,
 				E828F32F298EB2150063EC58 /* HomeEntity.swift */,
 				E828F331298EB2210063EC58 /* HomeRouter.swift */,
+				E8943AC32D7B72E7009A4AE9 /* HomeContracts.swift */,
+				E8943AC52D7B8580009A4AE9 /* HomeBuilder.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -112,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				E828F313298EAF990063EC58 /* AppDelegate.swift */,
-				E828F315298EAF990063EC58 /* SceneDelegate.swift */,
 				E828F31E298EAF9A0063EC58 /* LaunchScreen.storyboard */,
 				E828F31C298EAF9A0063EC58 /* Assets.xcassets */,
 				E828F321298EAF9A0063EC58 /* Info.plist */,
@@ -134,6 +155,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E8943ABA2D7B71CC009A4AE9 /* Managers */,
 			);
 			name = CryptoVIPER;
 			productName = CryptoVIPER;
@@ -190,17 +214,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8943AC42D7B72E7009A4AE9 /* HomeContracts.swift in Sources */,
+				E8943AC82D7B89B2009A4AE9 /* DetailContracts.swift in Sources */,
 				E828F32A298EB1E00063EC58 /* HomeView.swift in Sources */,
-				E81DD95E2A8CFB48003C768B /* DetailRouter.swift in Sources */,
 				E81DD9582A8CFB26003C768B /* DetailView.swift in Sources */,
 				E828F330298EB2150063EC58 /* HomeEntity.swift in Sources */,
 				E81DD95C2A8CFB3B003C768B /* DetailPresenter.swift in Sources */,
-				E81DD95A2A8CFB33003C768B /* DetailInteractor.swift in Sources */,
 				E828F314298EAF990063EC58 /* AppDelegate.swift in Sources */,
+				E8943AC62D7B8580009A4AE9 /* HomeBuilder.swift in Sources */,
 				E828F32E298EB2050063EC58 /* HomePresenter.swift in Sources */,
+				E8943ACA2D7B89CA009A4AE9 /* DetailBuilder.swift in Sources */,
 				E828F332298EB2210063EC58 /* HomeRouter.swift in Sources */,
 				E828F32C298EB1F00063EC58 /* HomeInteractor.swift in Sources */,
-				E828F316298EAF990063EC58 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +382,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -388,6 +414,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

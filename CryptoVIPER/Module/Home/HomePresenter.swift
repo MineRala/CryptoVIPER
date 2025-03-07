@@ -7,57 +7,43 @@
 
 import UIKit
 
-// talks to -> interactor, router, view
-// Class, protocol
+final class HomePresenter {
+    private unowned var view: HomeViewProtocol
+    private let interactor: HomeInteractorProtocol
+    private let router: HomeRouterProtocol
 
-enum NetworkError: Error {
-    case networkFailed
-    case parsingFailed
-    case invalidServerResponse
-}
-  
-protocol HomePresenterInput: AnyObject {
-    var router: HomeRouterInterface? { get set }
-    var interactor: HomeInteractorInterface? { get set }
-    var view: HomeViewInterface? { get set }
-    
-    func interactorDidDownloadCrypto(result: Result<[Crypto], Error>)
-    func viewDidLoad()
-    func onTapCell(model: Crypto, viewController: UIViewController)
+    init(view: HomeViewProtocol, interactor: HomeInteractorProtocol, router: HomeRouterProtocol) {
+        self.view = view
+        self.interactor = interactor
+        self.router = router
+        self.interactor.delegate = self
+    }
 }
 
-final class CryptoPresenter: HomePresenterInput {
-    var router: HomeRouterInterface?
-    var view: HomeViewInterface?
-    var interactor: HomeInteractorInterface? {
-        didSet {
-            // Completion için kullanılıyor.
-           // interactor?.downloadCryptos()
-           
-        }
+// MARK: - HomePresenterProtocol
+extension HomePresenter: HomePresenterProtocol {
+    func load() {
+        Task { await interactor.load() }
     }
     
-    func interactorDidDownloadCrypto(result: Result<[Crypto], Error>) {
-        switch result {
-        case .success(let cryptos):
-            view?.update(with: cryptos)
-        case .failure(_):
-            view?.update(with: "Try again later...")
-        }
+    func selectCrypto(at index: Int) {
+        interactor.selectCrypto(at: index)
     }
-    
-    func viewDidLoad() {
-        Task {
-            do {
-                guard let cryptos: [Crypto] = try await interactor?.downloadCryptos() else { return }
-                view?.update(with: cryptos)
-            } catch {
-                view?.update(with: "Try again later")
-            }
+}
+
+// MARK: - HomePresenterOutput
+extension HomePresenter: HomeInteractorDelegate {
+    func handleOutput(_ output: HomeInteractorOutput) {
+        switch output {
+        case .setLoading(let bool):
+            view.handleOutput(.setLoading(bool))
+        case .showCryptoList(let cryptos):
+            let cryptoPresentations = cryptos.map( CryptoPresentation.init)
+            view.handleOutput(.showCryptoList(cryptoPresentations))
+        case .showError(let error):
+            view.handleOutput(.showError(error))
+        case .showCryptoDetail(let crypto):
+            router.navigate(to: .detail(crypto))
         }
-    }
-    
-    func onTapCell(model: Crypto, viewController: UIViewController) {
-        router?.goToDetail(model: model, viewController: viewController)
     }
 }

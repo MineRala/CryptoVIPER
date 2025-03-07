@@ -5,84 +5,107 @@
 //  Created by Mine Rala on 4.02.2023.
 //
 
-import Foundation
 import UIKit
 
-// Talks to -> presenter
-// Class, protocol
-
-protocol HomeViewInterface: AnyObject {
-    var presenter: HomePresenterInput? { get set }
-    
-    func update(with cryptos: [Crypto])
-    func update(with error: String)
-}
-
-final class CryptoViewController: UIViewController, HomeViewInterface {
+final class HomeViewController: UIViewController {
     private lazy var tableView: UITableView = {
-       let table = UITableView()
+        let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.isHidden = true
         table.dataSource = self
         table.delegate = self
         return table
     }()
-    
+
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.isHidden = false
-        label.text = "Downloading.."
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .darkGray
         label.textAlignment = .center
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
-    
-    weak var presenter: HomePresenterInput?
-    var cryptos: [Crypto] = []
-    
+
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+
+    var presenter: HomePresenterProtocol!
+    private var cryptos: [CryptoPresentation] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubViews()
+        presenter.load()
+
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+        messageLabel.frame = CGRect(x: view.frame.width/2 - 150, y: view.frame.height/2 - 25, width: 300, height: 80)
+        activityIndicator.center = view.center
+    }
+
+}
+
+// MARK: - Private
+extension HomeViewController {
+    private func addSubViews() {
         view.backgroundColor = .white
         view.addSubview(tableView)
         view.addSubview(messageLabel)
-        presenter?.viewDidLoad()
-        
+        view.addSubview(activityIndicator)
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        // Subviewler eklenince çağırılır
-        // Subviewler eklendikten sonra yapılcak işlemleri burada yapmalıyız
-        tableView.frame = view.bounds
-        // message label tam ortada olacak o yüzden yarısını çıkartmamız lazım
-        messageLabel.frame = CGRect(x: view.frame.width/2 - 100, y: view.frame.height/2 - 25, width: 200, height: 50)
+
+    private func handleLoading(_ isLoading: Bool) {
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
-        
-    func update(with cryptos: [Crypto]) {
+
+    private func handleCryptoList(_ cryptos: [CryptoPresentation]) {
+        self.cryptos = cryptos
+        self.updateVisibility(isDataVisible: true)
+        self.tableView.reloadData()
+    }
+
+    private func handleError(_ error: String) {
+        self.cryptos = []
+        self.messageLabel.text = error
+        self.updateVisibility(isDataVisible: false)
+    }
+
+    private func updateVisibility(isDataVisible: Bool) {
+        self.tableView.isHidden = !isDataVisible
+        self.messageLabel.isHidden = isDataVisible
+    }
+}
+
+// MARK: - HomeViewProtocol
+extension HomeViewController: HomeViewProtocol {
+    func handleOutput(_ output: HomePresenterOutput) {
         DispatchQueue.main.async {
-            self.cryptos = cryptos
-            self.messageLabel.isHidden = true
-            self.tableView.reloadData()
-            self.tableView.isHidden = false
-        }
-    }
-    
-    func update(with error: String) {
-        DispatchQueue.main.async {
-            self.cryptos = []
-            self.tableView.isHidden = true
-            self.messageLabel.text = error
-            self.messageLabel.isHidden = false
+            switch output {
+            case .setLoading(let isLoading):
+                self.handleLoading(isLoading)
+            case .showCryptoList(let cryptos):
+                self.handleCryptoList(cryptos)
+            case .showError(let error):
+                self.handleError(error)
+            }
         }
     }
 }
 
-extension CryptoViewController: UITableViewDataSource {
+// MARK: - UITableViewDataSource
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cryptos.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
@@ -93,9 +116,10 @@ extension CryptoViewController: UITableViewDataSource {
     }
 }
 
-extension CryptoViewController: UITableViewDelegate {
+// MARK: - UITableViewDelegate
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        presenter?.onTapCell(model: cryptos[indexPath.row], viewController: self)
+        presenter.selectCrypto(at: indexPath.row)
     }
 }

@@ -5,47 +5,23 @@
 //  Created by Mine Rala on 4.02.2023.
 //
 
-import Foundation
 import UIKit
 
-// talks to -> presenter
-// Class, protocol
-// EntryPoint -> Giriş noktası
-// Uygulama ilk açıldığında nereye gidecek, hangi sayfalara gidilecek
-// Uygulamayı organize eden class
+final class HomeRouter {
+    unowned let view: UIViewController
 
-typealias EntryPoint = HomeViewInterface & UIViewController
-
-protocol HomeRouterInterface: AnyObject {
-    var entry: EntryPoint? { get }
-    static func startExecution() -> HomeRouterInterface
-    func goToDetail(model: Crypto, viewController: UIViewController)
+    init(view: UIViewController) {
+        self.view = view
+    }
 }
 
-final class CryptoRouter: HomeRouterInterface {
-    weak var entry: EntryPoint?
-    
-    static func startExecution() -> HomeRouterInterface {
-        let router = CryptoRouter()
-        
-        // Assign VIP
-        let view: HomeViewInterface = CryptoViewController()
-        let presenter: HomePresenterInput = CryptoPresenter()
-        let interactor: HomeInteractorInterface = CryptoInteractor()
-        
-        view.presenter = presenter
-        presenter.view = view
-        presenter.router = router
-        presenter.interactor = interactor
-        interactor.presenter = presenter
-        
-        router.entry = view as? EntryPoint
-        
-        return router
-    }
-    
-    func goToDetail(model: Crypto, viewController: UIViewController) {
-        let repoDetailVC = DetailRouter.createModule(model)
-        viewController.present(repoDetailVC, animated: true, completion: nil)
+// MARK: - HomeRouterProtocol
+extension HomeRouter: HomeRouterProtocol {
+    func navigate(to route: HomeRoute) {
+        switch route {
+        case .detail(let crypto):
+            let detailView = DetailBuilder.build(with: crypto)
+            view.present(detailView, animated: true)
+        }
     }
 }
