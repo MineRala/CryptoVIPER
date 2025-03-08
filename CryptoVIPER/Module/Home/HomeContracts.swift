@@ -14,7 +14,7 @@ protocol HomeInteractorProtocol: AnyObject {
     func selectCrypto(at index: Int)
 }
 
-enum HomeInteractorOutput {
+enum HomeInteractorOutput: Equatable {
     case setLoading(Bool)
     case showCryptoList([Crypto])
     case showError(String)
@@ -31,7 +31,7 @@ protocol HomePresenterProtocol: AnyObject {
     func selectCrypto(at index: Int)
 }
 
-enum HomePresenterOutput {
+enum HomePresenterOutput: Equatable {
     case setLoading(Bool)
     case showCryptoList([CryptoPresentation])
     case showError(String)
@@ -43,7 +43,7 @@ protocol HomeViewProtocol: AnyObject {
 }
 
 // MARK: - Router
-enum HomeRoute {
+enum HomeRoute: Equatable {
     case detail(Crypto)
 }
 

@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Crypto: Decodable {
+struct Crypto: Codable, Equatable {
     let currency: String
     let price: String
 }
 
 // UI' a Entity gönderilmez, Presentation modeli gönderilir. Presenterda entitiyi prsentation model'e convert ediyoruz.
-struct CryptoPresentation {
+struct CryptoPresentation: Equatable {
     let currency: String
     let price: String
 

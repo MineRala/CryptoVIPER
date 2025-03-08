@@ -23,6 +23,16 @@
 		E8943ACA2D7B89CA009A4AE9 /* DetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8943AC92D7B89CA009A4AE9 /* DetailBuilder.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E8ACD3262D7C7A1A0064C9DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E828F308298EAF990063EC58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E828F30F298EAF990063EC58;
+			remoteInfo = CryptoVIPER;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		E81DD9572A8CFB26003C768B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		E81DD95B2A8CFB3B003C768B /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -40,6 +50,7 @@
 		E8943AC52D7B8580009A4AE9 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		E8943AC72D7B89B2009A4AE9 /* DetailContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContracts.swift; sourceTree = "<group>"; };
 		E8943AC92D7B89CA009A4AE9 /* DetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBuilder.swift; sourceTree = "<group>"; };
+		E8ACD3222D7C7A1A0064C9DD /* CryptoVIPERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoVIPERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -56,10 +67,18 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E8943ABA2D7B71CC009A4AE9 /* Managers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Managers; sourceTree = "<group>"; };
 		E8943ABD2D7B7269009A4AE9 /* Enums */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E8943AC02D7B727B009A4AE9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Enums; sourceTree = "<group>"; };
+		E8ACD3232D7C7A1A0064C9DD /* CryptoVIPERTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CryptoVIPERTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E828F30D298EAF990063EC58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8ACD31F2D7C7A1A0064C9DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -84,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				E828F312298EAF990063EC58 /* CryptoVIPER */,
+				E8ACD3232D7C7A1A0064C9DD /* CryptoVIPERTests */,
 				E828F311298EAF990063EC58 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				E828F310298EAF990063EC58 /* CryptoVIPER.app */,
+				E8ACD3222D7C7A1A0064C9DD /* CryptoVIPERTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,6 +185,29 @@
 			productReference = E828F310298EAF990063EC58 /* CryptoVIPER.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E8ACD3212D7C7A1A0064C9DD /* CryptoVIPERTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8ACD32A2D7C7A1A0064C9DD /* Build configuration list for PBXNativeTarget "CryptoVIPERTests" */;
+			buildPhases = (
+				E8ACD31E2D7C7A1A0064C9DD /* Sources */,
+				E8ACD31F2D7C7A1A0064C9DD /* Frameworks */,
+				E8ACD3202D7C7A1A0064C9DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8ACD3272D7C7A1A0064C9DD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E8ACD3232D7C7A1A0064C9DD /* CryptoVIPERTests */,
+			);
+			name = CryptoVIPERTests;
+			packageProductDependencies = (
+			);
+			productName = CryptoVIPERTests;
+			productReference = E8ACD3222D7C7A1A0064C9DD /* CryptoVIPERTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -171,11 +215,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					E828F30F298EAF990063EC58 = {
 						CreatedOnToolsVersion = 14.1;
+					};
+					E8ACD3212D7C7A1A0064C9DD = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = E828F30F298EAF990063EC58;
 					};
 				};
 			};
@@ -193,6 +241,7 @@
 			projectRoot = "";
 			targets = (
 				E828F30F298EAF990063EC58 /* CryptoVIPER */,
+				E8ACD3212D7C7A1A0064C9DD /* CryptoVIPERTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,6 +253,13 @@
 			files = (
 				E828F320298EAF9A0063EC58 /* LaunchScreen.storyboard in Resources */,
 				E828F31D298EAF9A0063EC58 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8ACD3202D7C7A1A0064C9DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +285,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E8ACD31E2D7C7A1A0064C9DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E8ACD3272D7C7A1A0064C9DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E828F30F298EAF990063EC58 /* CryptoVIPER */;
+			targetProxy = E8ACD3262D7C7A1A0064C9DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E828F31E298EAF9A0063EC58 /* LaunchScreen.storyboard */ = {
@@ -421,6 +492,53 @@
 			};
 			name = Release;
 		};
+		E8ACD3282D7C7A1A0064C9DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 29JK24NZ4B;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MineRala.CryptoVIPERTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoVIPER.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CryptoVIPER";
+			};
+			name = Debug;
+		};
+		E8ACD3292D7C7A1A0064C9DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 29JK24NZ4B;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MineRala.CryptoVIPERTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoVIPER.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CryptoVIPER";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -438,6 +556,15 @@
 			buildConfigurations = (
 				E828F325298EAF9A0063EC58 /* Debug */,
 				E828F326298EAF9A0063EC58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8ACD32A2D7C7A1A0064C9DD /* Build configuration list for PBXNativeTarget "CryptoVIPERTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8ACD3282D7C7A1A0064C9DD /* Debug */,
+				E8ACD3292D7C7A1A0064C9DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
